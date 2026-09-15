@@ -1,0 +1,4 @@
+_src/
+_qa/
+*.log
+node_modules/
