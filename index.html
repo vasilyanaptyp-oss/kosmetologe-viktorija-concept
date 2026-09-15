@@ -122,22 +122,24 @@ a{color:inherit}
 /* ---------- pirmas ekranas ---------- */
 .hero{position:relative;padding:28px 0 56px;overflow-x:clip}
 .stage{position:relative;max-width:var(--max);margin:0 auto;padding:0 var(--pad);display:flex;flex-direction:column}
-.eyebrow{font:600 .8125rem/1.3 var(--text);letter-spacing:.09em;text-transform:uppercase;color:var(--ink-2);margin:0 0 12px}
+.eyebrow{font:500 .9375rem/1.35 var(--text);color:var(--ink-2);margin:0 0 12px}
 .h1{font-size:clamp(2.5rem,10.5vw,4.25rem);letter-spacing:-.02em;line-height:1;text-wrap:balance;margin:0 0 20px}
 .h1 .b{display:inline}
 .h1b{display:none}
-.photo{position:relative;margin:4px 0 20px;align-self:center;width:100%;max-width:440px}
-.photo::before{content:"";position:absolute;left:50%;top:50%;width:100vw;height:1px;transform:translateX(-50%);background:var(--line);z-index:0}
+.photo{--m:8px;--ly:calc(var(--m) + 1px + (100cqw - 2 * var(--m) - 2px) * .258);position:relative;margin:4px 0 12px;align-self:center;width:100%;max-width:440px;container-type:inline-size}
+.photo::before{content:"";position:absolute;left:50%;top:var(--ly);width:100vw;height:1px;transform:translateX(-50%);background:var(--line);z-index:0}
 .mat{position:relative;z-index:1;padding:8px;background:var(--lamp);border:1px solid var(--line);border-radius:3px}
 .pic{position:relative;overflow:hidden;border-radius:1px;background:#dfe4e6}
 .pic img{width:100%;aspect-ratio:1}
-.plamp{position:absolute;left:34.6%;top:25.6%;width:15%;aspect-ratio:1;margin:-7.5% 0 0 -7.5%;border-radius:50%;pointer-events:none;mix-blend-mode:screen}
-.plamp i{position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle,rgba(246,251,255,.95) 0,rgba(236,246,255,.62) 26%,rgba(226,240,255,.22) 48%,rgba(226,240,255,0) 70%)}
+.origin{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.origin path{fill:none;vector-effect:non-scaling-stroke;stroke-linecap:round}
+.origin .k{stroke:#fff;stroke-width:3.5;opacity:.9}
+.origin .s{stroke:var(--slate);stroke-width:1.5}
 .photo figcaption{position:relative;z-index:1;display:flex;justify-content:space-between;gap:12px;margin-top:8px;font-size:.8125rem;color:var(--ink-2)}
-.glints{position:absolute;left:50%;top:50%;width:100vw;height:1px;transform:translateX(-50%);z-index:0;pointer-events:none}
+.glints{position:absolute;left:50%;top:var(--ly);width:100vw;height:1px;transform:translateX(-50%);z-index:0;pointer-events:none}
 .glints i{position:absolute;top:-1px;height:3px;width:min(26vw,300px);border-radius:3px}
-.glints .gl{right:calc(50% + 220px);background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.95));transform-origin:100% 50%}
-.glints .gr{left:calc(50% + 220px);background:linear-gradient(90deg,rgba(255,255,255,.95),rgba(255,255,255,0));transform-origin:0 50%}
+.glints .gl{right:calc(50% + 50cqw);background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.95));transform-origin:100% 50%}
+.glints .gr{left:calc(50% + 50cqw);background:linear-gradient(90deg,rgba(255,255,255,.95),rgba(255,255,255,0));transform-origin:0 50%}
 .sub{max-width:34rem;color:var(--ink-2);font-size:1.0625rem;margin:0 0 18px;text-wrap:pretty}
 .cta{display:grid;grid-template-columns:1.2fr 1fr;gap:8px;margin:0 0 22px}
 .cta .btn{padding:10px 12px;gap:8px}
@@ -154,17 +156,12 @@ a{color:inherit}
 }
 @media (min-width:1080px){
   .hero{padding:44px 0 72px}
-  .stage{display:grid;grid-template-columns:1fr var(--ph) 1fr;grid-template-rows:calc(var(--ph) / 2) minmax(calc(var(--ph) / 2),auto);column-gap:clamp(32px,3.6vw,56px)}
-  .photo{grid-column:2;grid-row:1 / span 2;align-self:start;margin:0;max-width:none;width:var(--ph)}
-  .glints .gl{right:calc(50% + var(--ph) / 2)}
-  .glints .gr{left:calc(50% + var(--ph) / 2)}
-  .glints{top:calc(var(--ph) / 2)}
-  .photo::before{display:none}
-  .stage::before{content:"";position:absolute;left:50%;top:calc(var(--ph) / 2);width:100vw;height:1px;transform:translateX(-50%);background:var(--line)}
-  .za{grid-column:1;grid-row:1;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-end;text-align:right;padding-bottom:22px}
-  .zb{grid-column:3;grid-row:2;padding-top:24px}
-  .zc{grid-column:1;grid-row:2;padding-top:24px}
-  .zd{grid-column:3;grid-row:1;align-self:start;padding-top:2px}
+  .stage{display:grid;grid-template-columns:1fr var(--ph) 1fr;grid-template-rows:auto auto;column-gap:clamp(32px,3.6vw,56px)}
+  .photo{--m:10px;grid-column:2;grid-row:2;align-self:start;margin:calc(-1 * (11px + (var(--ph) - 22px) * .258)) 0 0;max-width:none;width:var(--ph)}
+  .za{grid-column:1;grid-row:1;display:flex;flex-direction:column;align-items:flex-end;text-align:right;padding-bottom:26px}
+  .zb{grid-column:3;grid-row:2;padding-top:26px}
+  .zc{grid-column:1;grid-row:2;padding-top:26px}
+  .zd{grid-column:3;grid-row:1;align-self:end;padding-bottom:26px}
   .h1{font-size:clamp(3.25rem,4.6vw,4.25rem);margin:0}
   .h1 .b{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
   .h1b{display:block;font:300 clamp(3.25rem,4.6vw,4.25rem)/1 var(--disp);letter-spacing:-.02em;text-wrap:balance;margin:0 0 22px}
@@ -189,18 +186,18 @@ main{position:relative}
 .lamp-on .lamp-layer{display:block}
 main > section{position:relative;z-index:1;overflow-x:clip}
 .lamp{position:absolute;left:0;top:0;width:480px;height:480px;margin:-240px 0 0 -240px;will-change:transform;opacity:0}
-.lamp .halo{position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.92) 0,rgba(247,251,255,.78) 22%,rgba(240,247,255,.42) 40%,rgba(240,247,255,.14) 56%,rgba(240,247,255,0) 70%)}
+.lamp .halo{position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle closest-side,rgba(255,255,255,.3) 0,rgba(250,253,255,.42) 40%,rgba(255,255,255,.9) 56%,rgba(246,250,255,.55) 66%,rgba(240,247,255,.2) 80%,rgba(240,247,255,0) 100%)}
 .lamp svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 
 /* statinis žiedas (telefone, be JS, sumažinus judesį) */
 .ring{position:absolute;pointer-events:none;border-radius:50%}
-.ring .halo{position:absolute;inset:-28%;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.9) 0,rgba(247,251,255,.7) 26%,rgba(240,247,255,.3) 46%,rgba(240,247,255,0) 70%)}
+.ring .halo{position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle closest-side,rgba(255,255,255,.3) 0,rgba(250,253,255,.42) 40%,rgba(255,255,255,.9) 56%,rgba(246,250,255,.55) 66%,rgba(240,247,255,.2) 80%,rgba(240,247,255,0) 100%)}
 .ring svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 .lamp-on .anchor-ring{opacity:0}
 
 /* ---------- sekcijos ---------- */
 .sec{padding:clamp(64px,10vw,128px) 0}
-.kicker{display:flex;align-items:center;gap:10px;font:600 .8125rem/1.3 var(--text);letter-spacing:.09em;text-transform:uppercase;color:var(--ink-2);margin:0 0 14px}
+.kicker{display:flex;align-items:center;gap:10px;font:500 .9375rem/1.35 var(--text);color:var(--ink-2);margin:0 0 14px}
 .kicker::before{content:"";width:28px;height:1px;background:var(--ink-2)}
 .h2{font-size:clamp(2.5rem,7.5vw,4.5rem);letter-spacing:-.02em;margin:0 0 18px;text-wrap:balance}
 .lead{color:var(--ink-2);max-width:32rem;text-wrap:pretty}
@@ -239,9 +236,8 @@ main > section{position:relative;z-index:1;overflow-x:clip}
 .lens-wrap{position:relative;display:grid;justify-items:center;padding:52px 0 8px}
 .lens{position:relative;width:min(250px,64vw);aspect-ratio:1;display:grid;place-items:center;text-align:center}
 .lens .ring{inset:-55%}
-.lens .ring .halo{inset:4%}
 .lens-disc{position:relative;z-index:1;width:100%;height:100%;border-radius:50%;background:var(--lamp);box-shadow:0 0 0 1px var(--line),inset 0 1px 0 #fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:20px}
-.lens-disc .lbl{font:600 .8125rem/1.2 var(--text);letter-spacing:.09em;text-transform:uppercase;color:var(--ink-2)}
+.lens-disc .lbl{font:500 .9375rem/1.2 var(--text);color:var(--ink-2)}
 .lens-disc a.big{font:300 clamp(1.625rem,7vw,2.125rem)/1.1 var(--disp);letter-spacing:-.005em;text-decoration:none;min-height:44px;display:inline-flex;align-items:center;font-variant-numeric:tabular-nums lining-nums}
 .lens-disc .btn{min-height:46px;padding:8px 18px;margin-top:6px}
 .lens-note{margin:58px 0 0;font-size:.9375rem;color:var(--ink-2);text-align:center}
@@ -249,7 +245,7 @@ main > section{position:relative;z-index:1;overflow-x:clip}
 .panel h3{font:500 1.625rem/1.15 var(--disp);margin:0 0 4px}
 .panel .hint{color:var(--ink-2);font-size:.9375rem;margin:0 0 16px}
 fieldset{border:0;margin:0 0 14px;padding:0;min-width:0}
-legend{font:600 .8125rem/1.3 var(--text);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);margin:0 0 8px;padding:0}
+legend{font:500 .9375rem/1.35 var(--text);color:var(--ink);margin:0 0 8px;padding:0}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chips label{position:relative}
 .chips input{position:absolute;opacity:0;width:1px;height:1px;margin:0}
@@ -258,11 +254,19 @@ legend{font:600 .8125rem/1.3 var(--text);letter-spacing:.08em;text-transform:upp
 .chips input:focus-visible + span{outline:2px solid var(--slate);outline-offset:2px}
 @media (hover:hover) and (pointer:fine){.chips span:hover{border-color:var(--slate)}}
 .field{display:grid;gap:6px;margin:4px 0 16px;max-width:320px}
-.field label{font:600 .8125rem/1.3 var(--text);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.field label{font:500 .9375rem/1.35 var(--text);color:var(--ink)}
 .field input{font:400 1rem var(--text);min-height:46px;padding:10px 12px;border:1px solid var(--ice);border-radius:8px;background:#fff;color:var(--ink)}
 .field input:focus{outline:2px solid var(--slate);outline-offset:1px;border-color:var(--slate)}
+.clear{display:inline-flex;align-items:center;min-height:44px;margin:-6px 0 8px;padding:0;border:0;background:none;font:500 .9375rem var(--text);color:var(--slate);text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+.clear[disabled]{color:var(--ink-2);text-decoration:none;cursor:default;opacity:.75}
+.desk-note{display:none}
+@media (hover:hover) and (pointer:fine){
+  .desk-note{display:block}
+  .panel .btns #copyBtn{order:-1;background:var(--slate);border-color:var(--slate);color:#fff}
+  .panel .btns #smsBtn{background:transparent;color:var(--ink);border-color:var(--ink)}
+}
 .msg{margin:0 0 14px;padding:14px 16px;border:1px solid var(--line);border-left:3px solid var(--slate);border-radius:4px;background:#fff}
-.msg .lbl{display:block;font:600 .75rem/1.3 var(--text);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);margin-bottom:4px}
+.msg .lbl{display:block;font:500 .875rem/1.35 var(--text);color:var(--ink-2);margin-bottom:6px}
 .msg output{display:block;white-space:pre-line;font-size:1rem;line-height:1.5}
 .panel .btns{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center}
 .panel .note{margin:12px 0 0;font-size:.875rem;color:var(--ink-2)}
@@ -293,13 +297,13 @@ legend{font:600 .8125rem/1.3 var(--text);letter-spacing:.08em;text-transform:upp
 /* telefono juosta */
 .bar{position:fixed;left:0;right:0;bottom:0;z-index:45;display:grid;grid-template-columns:1.35fr 1fr;gap:8px;padding:8px 12px calc(8px + env(safe-area-inset-bottom));background:rgba(250,252,253,.96);border-top:1px solid var(--line);transition:transform .35s var(--ease),visibility 0s linear 0s}
 .bar .btn{min-height:48px;padding:8px 12px}
-.bar.away{transform:translateY(110%);visibility:hidden;transition:transform .35s var(--ease),visibility 0s linear .35s}
+.js .bar:not(.show),.bar.away{transform:translateY(110%);visibility:hidden;transition:transform .35s var(--ease),visibility 0s linear .35s}
 @media (max-width:899px){:root{--bar:72px}}
 @media (min-width:900px){.bar{display:none}}
 
 /* be GSAP: švelnus įsijungimas CSS keliu */
 @media (prefers-reduced-motion:no-preference){
-  html:not(.gs) .plamp{animation:lampOn 1.4s var(--ease) .2s both}
+  html:not(.gs) .origin .arc{animation:lampOn 1.4s var(--ease) .2s both}
   html:not(.gs) .glints i{animation:glintIn 1.2s var(--ease) .35s both}
 }
 @keyframes lampOn{from{opacity:0}to{opacity:1}}
@@ -374,12 +378,12 @@ legend{font:600 .8125rem/1.3 var(--text);letter-spacing:.08em;text-transform:upp
               <source type="image/webp" srcset="img/viktorija-kabinetas-480.webp 480w, img/viktorija-kabinetas-720.webp 720w, img/viktorija-kabinetas-1000.webp 1000w" sizes="(min-width:1080px) 440px, (min-width:768px) 440px, calc(100vw - 50px)">
               <img src="img/viktorija-kabinetas-720.jpg" width="1000" height="1000" alt="Medicinos kosmetologė Viktorija savo kabinete Visagine" data-i18n-attr="alt:photoAlt" fetchpriority="high" decoding="async">
             </picture>
-            <span class="plamp" aria-hidden="true"><i></i></span>
+            <svg class="origin" viewBox="0 0 1000 1000" aria-hidden="true" focusable="false"><g class="arc"><path class="k" d="M359 293.7A38 38 0 1 1 359 222.3"/><path class="s" d="M359 293.7A38 38 0 1 1 359 222.3"/></g></svg>
           </div>
         </div>
         <figcaption><span data-i18n="capL">Kabinetas</span><span>Tarybų g. 6, Visaginas</span></figcaption>
+        <div class="glints" aria-hidden="true"><i class="gl"></i><i class="gr"></i></div>
       </figure>
-      <div class="glints" aria-hidden="true"><i class="gl"></i><i class="gr"></i></div>
 
       <div class="zd"><p class="cap"><svg aria-hidden="true"><use href="#mark"/></svg><span data-i18n="capD">Šviesus kabinetas Visagine</span></p></div>
 
@@ -388,7 +392,7 @@ legend{font:600 .8125rem/1.3 var(--text);letter-spacing:.08em;text-transform:upp
         <p class="sub" data-i18n="sub">Viktorija, medicinos kosmetologė, priima kabinete Visagine. Užsiregistruokite telefonu arba parašykite SMS žinutę.</p>
         <div class="cta" id="heroCta">
           <a class="btn btn-slate" href="tel:+37061261703"><svg aria-hidden="true"><use href="#i-phone"/></svg><span class="stack"><span data-i18n="call">Skambinti</span><small class="num">+370 612 61703</small></span></a>
-          <a class="btn btn-line js-sms" href="sms:+37061261703?&amp;body=Laba%20diena%2C%20Viktorija!%20Nor%C4%97%C4%8Diau%20u%C5%BEsiregistruoti%20konsultacijai.%20Ar%20b%C5%ABt%C5%B3%20laisvo%20laiko%3F"><svg aria-hidden="true"><use href="#i-msg"/></svg><span data-i18n="writeSms">Parašyti SMS</span></a>
+          <a class="btn btn-line js-sms" href="sms:+37061261703?&amp;body=Laba%20diena%2C%20Viktorija.%20Nor%C4%97%C4%8Diau%20u%C5%BEsiregistruoti.%20Ar%20b%C5%ABt%C5%B3%20laisvo%20laiko%3F"><svg aria-hidden="true"><use href="#i-msg"/></svg><span data-i18n="writeSms">Parašyti SMS</span></a>
         </div>
       </div>
 
@@ -483,14 +487,16 @@ legend{font:600 .8125rem/1.3 var(--text);letter-spacing:.08em;text-transform:upp
             <label for="nm" data-i18n="nameLbl">Vardas (nebūtina)</label>
             <input id="nm" name="nm" type="text" autocomplete="given-name" maxlength="40">
           </div>
+          <button class="clear" type="button" id="clearBtn" data-i18n="clear">Išvalyti pasirinkimus</button>
           <div class="msg">
-            <span class="lbl" data-i18n="msgLbl">Jūsų žinutė</span>
-            <output id="msgOut" for="nm" aria-live="polite">Laba diena, Viktorija! Norėčiau užsiregistruoti konsultacijai. Ar būtų laisvo laiko?</output>
+            <span class="lbl"><span data-i18n="msgLbl">Jūsų žinutė</span> · <span data-i18n="msgTo">Kam:</span> <span class="num">+370 612 61703</span></span>
+            <output id="msgOut" for="nm" aria-live="polite">Laba diena, Viktorija. Norėčiau užsiregistruoti. Ar būtų laisvo laiko?</output>
           </div>
           <div class="btns">
-            <a class="btn btn-slate js-sms" id="smsBtn" href="sms:+37061261703?&amp;body=Laba%20diena%2C%20Viktorija!%20Nor%C4%97%C4%8Diau%20u%C5%BEsiregistruoti%20konsultacijai.%20Ar%20b%C5%ABt%C5%B3%20laisvo%20laiko%3F"><svg aria-hidden="true"><use href="#i-msg"/></svg><span data-i18n="sendSms">Siųsti SMS</span></a>
+            <a class="btn btn-slate js-sms" id="smsBtn" href="SMSHREF"><svg aria-hidden="true"><use href="#i-msg"/></svg><span data-i18n="sendSms">Siųsti SMS</span></a>
             <button class="btn btn-line" type="button" id="copyBtn" hidden><span data-i18n="copy">Kopijuoti tekstą</span></button>
           </div>
+          <p class="note desk-note" data-i18n="deskNote">Kompiuteryje nukopijuokite tekstą ir išsiųskite jį iš telefono numeriu +370 612 61703.</p>
           <p class="note" data-i18n="smsNote">Žinutė atsidarys jūsų telefone, išsiųsite ją patys. Tikslų laiką suderinsite su Viktorija.</p>
         </form>
       </div>
@@ -505,7 +511,7 @@ legend{font:600 .8125rem/1.3 var(--text);letter-spacing:.08em;text-transform:upp
         <p class="addr">Tarybų g. 6<small>Visaginas</small></p>
         <dl class="dl">
           <div><dt data-i18n="specTel">Telefonas</dt><dd><a class="num" href="tel:+37061261703">+370 612 61703</a></dd></div>
-          <div><dt>SMS</dt><dd><a class="js-sms" href="sms:+37061261703?&amp;body=Laba%20diena%2C%20Viktorija!%20Nor%C4%97%C4%8Diau%20u%C5%BEsiregistruoti%20konsultacijai.%20Ar%20b%C5%ABt%C5%B3%20laisvo%20laiko%3F" data-i18n="writeSms">Parašyti SMS</a></dd></div>
+          <div><dt>SMS</dt><dd><a class="js-sms" href="sms:+37061261703?&amp;body=Laba%20diena%2C%20Viktorija.%20Nor%C4%97%C4%8Diau%20u%C5%BEsiregistruoti.%20Ar%20b%C5%ABt%C5%B3%20laisvo%20laiko%3F" data-i18n="writeSms">Parašyti SMS</a></dd></div>
           <div><dt data-i18n="mailDt">El. paštas</dt><dd><a href="mailto:viktorija.puziniene@gmail.com" data-i18n="mailA">Rašyti el. laišką</a></dd></div>
           <div><dt>Facebook</dt><dd><a href="https://www.facebook.com/viktorija.puziniene.98" target="_blank" rel="noopener" data-i18n="fbA">Facebook puslapis</a></dd></div>
           <div><dt data-i18n="routeDt">Kelias</dt><dd><a href="https://www.google.com/maps/search/?api=1&amp;query=Taryb%C5%B3%20g.%206%2C%20Visaginas" target="_blank" rel="noopener" data-i18n="routeA">Atidaryti žemėlapyje</a></dd></div>
@@ -524,7 +530,7 @@ legend{font:600 .8125rem/1.3 var(--text);letter-spacing:.08em;text-transform:upp
 
 <div class="bar" id="bar">
   <a class="btn btn-slate" href="tel:+37061261703"><svg aria-hidden="true"><use href="#i-phone"/></svg><span data-i18n="call">Skambinti</span></a>
-  <a class="btn btn-line js-sms" href="sms:+37061261703?&amp;body=Laba%20diena%2C%20Viktorija!%20Nor%C4%97%C4%8Diau%20u%C5%BEsiregistruoti%20konsultacijai.%20Ar%20b%C5%ABt%C5%B3%20laisvo%20laiko%3F"><svg aria-hidden="true"><use href="#i-msg"/></svg>SMS</a>
+  <a class="btn btn-line js-sms" href="sms:+37061261703?&amp;body=Laba%20diena%2C%20Viktorija.%20Nor%C4%97%C4%8Diau%20u%C5%BEsiregistruoti.%20Ar%20b%C5%ABt%C5%B3%20laisvo%20laiko%3F"><svg aria-hidden="true"><use href="#i-msg"/></svg>SMS</a>
 </div>
 
 <script type="application/ld+json">

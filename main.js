@@ -60,11 +60,17 @@
       if (wasChecked === inp && e.detail > 0) {
         e.preventDefault();
         inp.checked = false; wasChecked = null;
-        readState(); render(true); setGlint();
+        readState(); render(true); setGlint(); syncClear();
       }
     });
   });
-  form.addEventListener('change', function () { readState(); render(true); setGlint(); });
+  var clearBtn = q('#clearBtn');
+  function syncClear() { clearBtn.disabled = !(state.topic || state.when || state.time); }
+  clearBtn.addEventListener('click', function () {
+    qa('.chips input', form).forEach(function (i) { i.checked = false; });
+    readState(); render(true); setGlint(); syncClear();
+  });
+  form.addEventListener('change', function () { readState(); render(true); setGlint(); syncClear(); });
   nameInput.addEventListener('input', function () { readState(); render(false); });
   form.addEventListener('submit', function (e) { e.preventDefault(); });
 
@@ -83,7 +89,7 @@
     a.addEventListener('click', function () {
       var inp = q('input[name="topic"][value="' + a.getAttribute('data-topic') + '"]', form);
       if (!inp) return;
-      inp.checked = true; readState(); render(true);
+      inp.checked = true; readState(); render(true); syncClear();
       var chip = inp.nextElementSibling;
       if (useG) G.fromTo(chip, { scale: 1 }, { scale: 1.06, duration: 0.18, yoyo: true, repeat: 1, ease: 'power2.out', delay: 0.5 });
     });
@@ -94,7 +100,7 @@
     var s = q('span', copyBtn); if (s) s.textContent = VK.t('copy');
     if (useG) ST.refresh();
   });
-  readState(); render(false);
+  readState(); render(false); syncClear();
 
   /* ---------- telefono juosta: rodoma, kai nesimato kitų skambinimo mygtukų ---------- */
   var bar = q('#bar');
@@ -104,9 +110,8 @@
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) { seen.set(en.target, en.isIntersecting); });
       var any = false; seen.forEach(function (v) { if (v) any = true; });
-      bar.classList.toggle('away', any);
+      bar.classList.toggle('show', !any);
     }, { threshold: 0 });
-    bar.classList.add('away');
     targets.forEach(function (t) { io.observe(t); });
   }
 
@@ -114,13 +119,13 @@
 
   /* ---------- GSAP ---------- */
   ST.config({ ignoreMobileResize: true });
-  var main = q('#main'), lamp = q('#lamp'), plamp = q('.plamp'), pic = q('.pic');
+  var main = q('#main'), lamp = q('#lamp'), pic = q('.pic'), arc = q('.origin .arc');
   var a1 = q('#a1'), a2ring = q('#a2 .ring'), rows = qa('.row .lit');
   var mm = G.matchMedia();
 
   /* 1. Įsijungimas: lemputė nuotraukoje ir šviesa palei horizontą (antraštė ir mygtukai lieka ramūs) */
   var intro = G.timeline({ defaults: { ease: 'power3.out' } });
-  intro.fromTo(plamp, { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 1.3, ease: 'expo.out' }, 0.15)
+  intro.fromTo(arc, { opacity: 0, rotation: -70, svgOrigin: '346 258' }, { opacity: 1, rotation: 0, svgOrigin: '346 258', duration: 1.4, ease: 'expo.out' }, 0.15)
        .fromTo('.glints i', { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 1.4, ease: 'expo.inOut', stagger: 0.08 }, 0.3)
        .to('.glints i', { opacity: 0.55, duration: 1.2, ease: 'sine.inOut' }, 1.8);
 
@@ -154,7 +159,8 @@
       if (trig) trig.kill();
       if (tl) tl.kill();
       var vh = window.innerHeight;
-      var p0 = centerOf(plamp), P = pic.getBoundingClientRect().width;
+      var pr = pic.getBoundingClientRect(), mr = main.getBoundingClientRect(), P = pr.width;
+      var p0 = { x: pr.left - mr.left + P * 0.346, y: pr.top - mr.top + P * 0.258 };
       var c1 = centerOf(a1), c2 = centerOf(a2ring);
       /* žiedo išorinis skersmuo = 0,625 SVG dėžutės; lempos dėžutė 480 px */
       var s0 = (0.048 * P / 0.625) / 480, s1 = c1.w / 480, s2 = c2.w / 480;
@@ -172,8 +178,6 @@
         .to(lamp, { duration: (2 * hold) / total })
         .to(lamp, { x: mid2x, y: mid2y, scale: (s1 + s2) / 2, duration: (y2 - y1 - hold) / total / 2, ease: 'sine.in' })
         .to(lamp, { x: c2.x, y: c2.y, scale: s2, duration: (y2 - y1 - hold) / total / 2, ease: 'sine.out' });
-      /* nuotraukos lemputė šiek tiek prigęsta, kai šviesa išeina */
-      tl.fromTo(q('i', plamp), { opacity: 1 }, { opacity: 0.45, duration: e0 / total, immediateRender: false }, 0);
       trig = ST.create({ trigger: document.body, start: 0, end: total, scrub: 0.7, animation: tl, fastScrollEnd: true });
     }
     build();
