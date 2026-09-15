@@ -138,7 +138,6 @@ a{color:inherit}
 .origin{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;filter:drop-shadow(0 0 5px rgba(255,255,255,.9))}
 .origin path{fill:none;vector-effect:non-scaling-stroke;stroke-linecap:round}
 .origin .k{stroke:#fff;stroke-width:2.2;opacity:.75}
-.photo figcaption{position:relative;z-index:1;display:none;justify-content:space-between;gap:12px;margin-top:8px;font-size:.8125rem;color:var(--ink-2)}
 .glints{position:absolute;left:50%;top:var(--ly);width:100vw;height:1px;transform:translateX(-50%);z-index:0;pointer-events:none}
 .glints i{position:absolute;top:-1px;height:3px;width:min(26vw,300px);border-radius:3px}
 .glints .gl{right:calc(50% + 50cqw);background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.95));transform-origin:100% 50%}
@@ -175,8 +174,7 @@ a{color:inherit}
   .spec{max-width:300px;margin-left:auto}
   .za .eyebrow span{display:block}
   .za .eyebrow .dot{display:none}
-  .photo figcaption{display:none}
-}
+  }
 @media (min-width:1080px) and (max-width:1239.98px){:root{--ph:min(372px,54svh)} .stage{column-gap:32px} .spec li{font-size:.875rem}}
 html[lang="ru"] .h1,html[lang="ru"] .h1b{font-size:clamp(2.3rem,9.6vw,3.9rem)}
 @media (min-width:1080px){html[lang="ru"] .h1,html[lang="ru"] .h1b{font-size:clamp(2.9rem,4.1vw,3.8rem)}}
@@ -400,7 +398,6 @@ legend{font:500 .9375rem/1.35 var(--text);color:var(--ink);margin:0 0 8px;paddin
             <svg class="origin" viewBox="0 0 1000 1000" aria-hidden="true" focusable="false"><g class="arc"><path class="k" d="M359 293.7A38 38 0 1 1 359 222.3"/></g></svg>
           </div>
         </div>
-        <figcaption><span data-i18n="capL">Kabinetas</span><span>Tarybų&nbsp;g.&nbsp;6, Visaginas</span></figcaption>
         <div class="glints" aria-hidden="true"><i class="gl"></i><i class="gr"></i></div>
       </figure>
 
@@ -469,7 +466,7 @@ legend{font:500 .9375rem/1.35 var(--text);color:var(--ink);margin:0 0 8px;paddin
               <a class="btn btn-slate" href="tel:+37061261703"><svg aria-hidden="true"><use href="#i-phone"/></svg><span data-i18n="call">Skambinti</span></a>
             </div>
           </div>
-                  </div>
+        </div>
 
         <form class="panel" id="smsForm" action="#" novalidate>
           <h3 data-i18n="panelTitle">Paruošime SMS žinutę</h3>
