@@ -22,6 +22,7 @@
 <link rel="preload" href="fonts/ysabeau-office-300-600-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/golos-text-400-700-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/ysabeau-office-300-600-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/golos-text-400-700-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
 <script>
 /* Kalba: ?lang= stipresnis už išsaugotą pasirinkimą. Jei reikia rusų, tekstą slepiame iki vertimo (ne ilgiau 1,5 s). */
 (function () {
@@ -29,7 +30,10 @@
   try { s = localStorage.getItem('vk-lang'); } catch (e) {}
   var l = p ? p[1] : (s === 'ru' || s === 'lt' ? s : 'lt');
   d.className += ' js';
-  if (l === 'ru') { d.lang = 'ru'; d.className += ' i18n-wait'; setTimeout(function () { d.classList.remove('i18n-wait'); }, 1500); }
+  if (l === 'ru') {
+    d.lang = 'ru'; d.className += ' i18n-wait'; setTimeout(function () { d.classList.remove('i18n-wait'); }, 1500);
+    ['golos-text-400-700', 'ysabeau-office-300-600'].forEach(function (f) { var k = document.createElement('link'); k.rel = 'preload'; k.as = 'font'; k.type = 'font/woff2'; k.crossOrigin = ''; k.href = 'fonts/' + f + '-cyrillic.woff2'; document.head.appendChild(k); });
+  }
 })();
 </script>
 <style>
@@ -46,14 +50,14 @@
 :root{
   --room:#E5EAEE; --room-2:#DAE1E6; --lamp:#FAFCFD; --white:#FFFFFF;
   --ink:#18222C; --ink-2:#4A5764; --slate:#2F4A63; --slate-2:#233A4F;
-  --line:#C5CFD7; --line-2:#D5DDE3; --ice:#A9BBCB;
+  --line:#C5CFD7; --line-2:#D5DDE3; --ice:#A9BBCB; --ctl-line:#7A8C9D;
   --disp:"Ysabeau Office","Ysabeau Fallback","Segoe UI",sans-serif;
   --text:"Golos Text","Golos Fallback",Arial,sans-serif;
   --ease:cubic-bezier(.22,.8,.24,1);
   --pad:clamp(16px,4.2vw,48px); --max:1240px; --hdr:64px;
   --ph:min(440px,58svh);
 }
-@media (max-width:767px){:root{--hdr:56px}}
+@media (max-width:767.98px){:root{--hdr:56px}}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;background:var(--room);scroll-padding-top:calc(var(--hdr) + 12px)}
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
@@ -126,7 +130,7 @@ a{color:inherit}
 .h1 .b{display:inline}
 .h1b{display:none}
 .photo{--m:8px;--ly:calc(var(--m) + 1px + (100cqw - 2 * var(--m) - 2px) * .258);position:relative;margin:4px 0 12px;align-self:center;width:100%;max-width:440px;container-type:inline-size}
-@media (max-width:767px){.photo{max-width:calc(100% - 48px)}}
+@media (max-width:767.98px){.photo{max-width:calc(100% - 48px)}}
 .photo::before{content:"";position:absolute;left:50%;top:var(--ly);width:100vw;height:1px;transform:translateX(-50%);background:var(--line);z-index:0}
 .mat{position:relative;z-index:1;padding:8px;background:var(--lamp);border:1px solid var(--line);border-radius:3px}
 .pic{position:relative;overflow:hidden;border-radius:1px;background:#dfe4e6}
@@ -149,7 +153,7 @@ a{color:inherit}
 .spec b{font-weight:500;text-align:right}
 .spec a{text-decoration:none;display:inline-flex;align-items:center;min-height:44px;margin:-10px 0}
 
-@media (min-width:768px) and (max-width:1079px){
+@media (min-width:768px) and (max-width:1079.98px){
   .stage{max-width:720px}
   .photo{align-self:flex-start}
   .cta{grid-template-columns:auto auto;justify-content:start}
@@ -172,7 +176,7 @@ a{color:inherit}
   .za .eyebrow .dot{display:none}
   .photo figcaption{display:none}
 }
-@media (min-width:1080px) and (max-width:1239px){:root{--ph:min(372px,54svh)} .stage{column-gap:32px} .spec li{font-size:.875rem}}
+@media (min-width:1080px) and (max-width:1239.98px){:root{--ph:min(372px,54svh)} .stage{column-gap:32px} .spec li{font-size:.875rem}}
 html[lang="ru"] .h1,html[lang="ru"] .h1b{font-size:clamp(2.3rem,9.6vw,3.9rem)}
 @media (min-width:1080px){html[lang="ru"] .h1,html[lang="ru"] .h1b{font-size:clamp(2.9rem,4.1vw,3.8rem)}}
 
@@ -236,7 +240,7 @@ main > section{position:relative;z-index:1;overflow-x:clip}
 .lens-disc{position:relative;z-index:1;width:100%;height:100%;border-radius:50%;background:var(--lamp);box-shadow:inset 0 1px 0 #fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:14px}
 .lens-disc .lbl{font:500 .9375rem/1.2 var(--text);color:var(--ink-2)}
 .lens-disc{container-type:inline-size}
-.lens-disc a.big{white-space:nowrap;font:300 12.5cqw/1.1 var(--disp);letter-spacing:-.005em;text-decoration:none;min-height:44px;display:inline-flex;align-items:center;font-variant-numeric:tabular-nums lining-nums}
+.lens-disc a.big{white-space:nowrap;font:300 1.875rem/1.1 var(--disp);font-size:12.5cqw;letter-spacing:-.005em;text-decoration:none;min-height:44px;display:inline-flex;align-items:center;font-variant-numeric:tabular-nums lining-nums}
 .lens-disc .btn{min-height:46px;padding:8px 18px;margin-top:6px}
 .panel{background:var(--lamp);border:1px solid var(--line);border-radius:6px;padding:clamp(18px,4vw,32px)}
 .panel h3{font:500 1.625rem/1.15 var(--disp);margin:0 0 4px}
@@ -246,7 +250,7 @@ legend{font:500 .9375rem/1.35 var(--text);color:var(--ink);margin:0 0 8px;paddin
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chips label{position:relative}
 .chips input{position:absolute;opacity:0;width:1px;height:1px;margin:0}
-.chips span{display:inline-flex;align-items:center;min-height:44px;padding:9px 15px;border:1px solid var(--ice);border-radius:8px;background:var(--white);font-size:.9375rem;line-height:1.2;cursor:pointer;transition:background-color .18s,border-color .18s,color .18s;user-select:none;-webkit-tap-highlight-color:transparent}
+.chips span{display:inline-flex;align-items:center;min-height:44px;padding:9px 15px;border:1px solid var(--ctl-line);border-radius:8px;background:var(--white);font-size:.9375rem;line-height:1.2;cursor:pointer;transition:background-color .18s,border-color .18s,color .18s;user-select:none;-webkit-tap-highlight-color:transparent}
 .chips input:checked + span{background:var(--slate);border-color:var(--slate);color:#fff}
 .chips input:focus-visible + span{outline:2px solid var(--slate);outline-offset:2px}
 @media (hover:hover) and (pointer:fine){.chips span:hover{border-color:var(--slate)}}
@@ -259,7 +263,7 @@ legend{font:500 .9375rem/1.35 var(--text);color:var(--ink);margin:0 0 8px;paddin
 }
 .field{display:grid;gap:6px;margin:4px 0 16px;max-width:320px}
 .field label{font:500 .9375rem/1.35 var(--text);color:var(--ink)}
-.field input{font:400 1rem var(--text);min-height:46px;padding:10px 12px;border:1px solid var(--ice);border-radius:8px;background:#fff;color:var(--ink)}
+.field input{font:400 1rem var(--text);min-height:46px;padding:10px 12px;border:1px solid var(--ctl-line);border-radius:8px;background:#fff;color:var(--ink)}
 .field input:focus{outline:2px solid var(--slate);outline-offset:1px;border-color:var(--slate)}
 .clear{position:absolute;top:4px;right:8px;display:inline-flex;align-items:center;min-height:36px;padding:0 6px;border:0;background:none;font:500 .8125rem var(--text);color:var(--slate);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
 .clear::after{content:"";position:absolute;inset:-4px -2px}
@@ -276,9 +280,10 @@ legend{font:500 .9375rem/1.35 var(--text);color:var(--ink);margin:0 0 8px;paddin
 .msg output{display:block;white-space:pre-line;font-size:1rem;line-height:1.5}
 .panel .btns{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center}
 .panel .note{margin:12px 0 0;font-size:.875rem;color:var(--ink-2)}
-@media (min-width:600px) and (max-width:899px){.lens{width:280px}}
+@media (min-width:600px) and (max-width:899.98px){.lens{width:280px}}
 @media (min-width:900px){
-  .reg{grid-template-columns:5fr 7fr;gap:56px;align-items:center}
+  .reg{grid-template-columns:5fr 7fr;gap:56px;align-items:start}
+  .lens-wrap{padding-top:96px}
   .lens{width:300px}
 }
 
@@ -309,16 +314,18 @@ legend{font:500 .9375rem/1.35 var(--text);color:var(--ink);margin:0 0 8px;paddin
 .bar.away,.js .bar:not(.show){transform:translateY(110%);visibility:hidden;transition:transform .35s var(--ease),visibility 0s linear .35s}
 .js .bar:not(.show):not(.away){animation:barFallback 0s linear 4s forwards}
 @keyframes barFallback{to{transform:none;visibility:visible}}
-@media (max-width:899px){:root{--bar:72px}}
+@media (max-width:899.98px){:root{--bar:72px}html{scroll-padding-bottom:calc(var(--bar) + env(safe-area-inset-bottom) + 12px)}}
 @media (min-width:900px){.bar{display:none}}
 
 /* be GSAP: švelnus įsijungimas CSS keliu */
 @media (prefers-reduced-motion:no-preference){
-  html:not(.gs) .origin .arc{animation:lampOn 1.4s var(--ease) .2s both}
-  html:not(.gs) .glints i{animation:glintIn 1.2s var(--ease) .35s both}
+  .origin .arc{transform-box:view-box;transform-origin:34.6% 25.8%;animation:arcIn 1.4s cubic-bezier(.16,1,.3,1) .15s both}
+  .glints i{animation:glintIn 3s var(--ease) .3s both}
 }
-@keyframes lampOn{from{opacity:0}to{opacity:1}}
-@keyframes glintIn{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes arcIn{from{opacity:0;transform:rotate(-70deg)}to{opacity:1;transform:none}}
+@keyframes glintIn{0%{transform:scaleX(0);opacity:0}45%{transform:scaleX(1);opacity:1}100%{transform:scaleX(1);opacity:.55}}
+@supports not (overflow-x:clip){body,.hero,main > section{overflow-x:hidden}}
+@supports not (width:1cqw){.glints{display:none}.photo::before{top:26%}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}}
 </style>
 </head>
@@ -497,7 +504,7 @@ legend{font:500 .9375rem/1.35 var(--text);color:var(--ink);margin:0 0 8px;paddin
           <div class="msg">
             <span class="lbl"><span data-i18n="msgLbl">Jūsų žinutė</span> · <span data-i18n="msgTo">Kam:</span>&nbsp;<span class="num">+370 612 61703</span></span>
             <button class="clear" type="button" id="clearBtn" data-i18n="clear">Išvalyti pasirinkimus</button>
-            <output id="msgOut" for="nm" aria-live="polite">Laba diena, Viktorija. Norėčiau užsiregistruoti. Ar būtų laisvo laiko?</output>
+            <output id="msgOut" aria-live="polite">Laba diena, Viktorija. Norėčiau užsiregistruoti. Ar būtų laisvo laiko?</output>
           </div>
           <div class="btns">
             <a class="btn btn-slate js-sms" id="smsBtn" href="sms:+37061261703?&amp;body=Laba%20diena%2C%20Viktorija.%20Nor%C4%97%C4%8Diau%20u%C5%BEsiregistruoti.%20Ar%20b%C5%ABt%C5%B3%20laisvo%20laiko%3F"><svg aria-hidden="true"><use href="#i-msg"/></svg><span data-i18n="sendSms">Siųsti SMS</span></a>

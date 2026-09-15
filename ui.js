@@ -8,6 +8,7 @@
   var qa = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
   var form = q('#smsForm'), out = q('#msgOut'), nameInput = q('#nm'), copyBtn = q('#copyBtn'), clearBtn = q('#clearBtn');
   var state = { topic: '', when: '', time: '', name: '' };
+  var still = !window.matchMedia || window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function readState() {
     ['topic', 'when', 'time'].forEach(function (k) {
@@ -25,28 +26,46 @@
     qa('.js-sms').forEach(function (a) { a.setAttribute('href', href); });
     if (out.textContent !== text) out.textContent = text;
     clearBtn.disabled = !(state.topic || state.when || state.time);
+    /* be GSAP ar sumažinus judesį lempos blizgesys vis tiek atsisuka į pasirinktą dienos metą */
+    if (still || !window.gsap) {
+      var rot = state.time === 'am' ? -62 : state.time === 'pm' ? 62 : 0;
+      qa('.glint').forEach(function (g) { g.setAttribute('transform', 'rotate(' + rot + ')'); g.style.opacity = state.time === 'any' ? 0 : 1; });
+    }
     emit(kind || 'change');
   }
 
   /* pažymėtą mygtuką paspaudus pele ar pirštu dar kartą — pasirinkimas nuimamas (klaviatūrai yra „Išvalyti“) */
-  var wasChecked = null;
+  var wasChecked = null, checkedAt = 0;
   qa('.chips input', form).forEach(function (inp) {
     var lab = inp.parentNode;
     lab.addEventListener('pointerdown', function () { wasChecked = inp.checked ? inp : null; });
     lab.addEventListener('click', function (e) {
-      if (wasChecked === inp && e.detail > 0) {
+      if (wasChecked === inp && e.detail === 1 && e.timeStamp - checkedAt > 450) {
         e.preventDefault();
         inp.checked = false; wasChecked = null;
         readState(); render('change');
       }
     });
   });
-  form.addEventListener('change', function () { readState(); render('change'); });
-  nameInput.addEventListener('input', function () { readState(); render('name'); });
+  form.addEventListener('change', function (e) {
+    if (e.target.type !== 'radio') return;
+    checkedAt = e.timeStamp;
+    readState(); render('change');
+  });
+  /* vardą rašant ekrano skaitytuvas neperskaito visos žinutės po kiekvienos raidės */
+  var nameTimer;
+  nameInput.addEventListener('input', function () {
+    out.setAttribute('aria-live', 'off');
+    readState(); render('name');
+    clearTimeout(nameTimer);
+    nameTimer = setTimeout(function () { out.setAttribute('aria-live', 'polite'); }, 900);
+  });
   form.addEventListener('submit', function (e) { e.preventDefault(); });
   clearBtn.addEventListener('click', function () {
-    qa('.chips input', form).forEach(function (i) { i.checked = false; });
+    var inputs = qa('.chips input', form);
+    inputs.forEach(function (i) { i.checked = false; });
     readState(); render('change');
+    inputs[0].focus();
   });
 
   function copyText(text) {
@@ -93,13 +112,13 @@
   var bar = q('#bar');
   if (bar && 'IntersectionObserver' in window) {
     var seen = [];
-    var targets = [q('#heroCta'), q('.lens-disc'), q('#smsBtn'), q('.ftr')].filter(Boolean);
+    var targets = [q('#heroCta'), q('#registracija .reg'), q('.ftr')].filter(Boolean);
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) { seen[targets.indexOf(en.target)] = en.isIntersecting; });
       var any = seen.some(Boolean);
       bar.classList.toggle('away', any);
       bar.classList.toggle('show', !any);
-    }, { threshold: 0 });
+    }, { threshold: 0, rootMargin: '-56px 0px 0px 0px' });
     targets.forEach(function (t) { io.observe(t); });
   } else if (bar) bar.classList.add('show');
 
