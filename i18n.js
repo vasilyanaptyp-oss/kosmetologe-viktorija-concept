@@ -14,78 +14,83 @@
     callAria: 'Позвонить +370 612 61703',
     name: 'Виктория',
     eyeRole: 'Медицинский косметолог', eyeCity: 'Висагинас',
-    h1a: 'Уход за кожей',
+    h1a: 'Уход за кожей',
     h1b: 'в светлом кабинете.',
-    photoAlt: 'Медицинский косметолог Виктория в своём кабинете в Висагинасе',
+    photoAlt: 'Медицинский косметолог Виктория в кабинете в Висагинасе',
     capL: 'Кабинет',
-    capD: 'Светлый кабинет в Висагинасе',
-    sub: 'Виктория, медицинский косметолог, принимает в кабинете в Висагинасе. Запишитесь по телефону или напишите SMS.',
+    sub: 'Виктория, медицинский косметолог, принимает в Висагинасе. Запишитесь по телефону или напишите SMS.',
     call: 'Позвонить',
     writeSms: 'Написать SMS',
     specCab: 'Кабинет', specReg: 'Запись', specRegV: 'по телефону или SMS', specTel: 'Телефон',
-    procKicker: 'Чем можем помочь',
-    procTitle: 'Процедуры',
-    procLead: 'Подробный список процедур скоро дополним. Если сомневаетесь, с чего начать, выберите консультацию.',
+    procKicker: 'Процедуры',
+    procTitle: 'С чего начать',
+    procLead: 'Выберите направление и добавьте его в SMS — или просто позвоните.',
     p1t: 'Консультация',
-    p1d: 'Разговор в кабинете: обсудите, что для вас важно и с чего начать.',
+    p1d: 'Если вы ещё не знаете, с чего начать.',
     p2t: 'Уход за кожей лица',
-    p2d: 'Уход подбирается индивидуально.',
+    p2d: 'Подробнее — по телефону или в SMS.',
     p3t: 'Список процедур дополним',
-    p3d: 'Пока о процедурах спрашивайте по телефону.',
+    p3d: 'О процедурах можно узнать по телефону.',
     soon: 'Готовится',
     addToMsg: 'Добавить в сообщение',
     regKicker: 'Запись',
-    regTitle: 'Запишитесь по телефону или SMS',
+    regTitle: 'Запишитесь по телефону или SMS',
     lensLbl: 'Звоните',
-    lensNote: 'Tarybų g. 6, Висагинас',
     panelTitle: 'Подготовим SMS',
-    panelHint: 'Отметьте, что вам подходит. Если ничего не выбрать, сообщение всё равно будет готово.',
-    lgTopic: 'Что интересует?', tConsult: 'Консультация', tFace: 'Уход за кожей лица', tUnsure: 'Пока не знаю',
+    panelHint: 'Отметьте, что вам подходит. Можно ничего не выбирать — сообщение всё равно будет готово.',
+    lgTopic: 'Что вас интересует?', tConsult: 'Консультация', tFace: 'Уход за кожей лица', tUnsure: 'Пока не знаю',
     lgWhen: 'Когда?', wAsap: 'Как можно скорее', wThis: 'На этой неделе', wNext: 'На следующей неделе',
     lgTime: 'Время дня', tmAm: 'До обеда', tmPm: 'После обеда', tmAny: 'Неважно',
     nameLbl: 'Имя (необязательно)',
     msgLbl: 'Ваше сообщение', msgTo: 'Кому:',
     clear: 'Сбросить выбор',
-    deskNote: 'На компьютере скопируйте текст и отправьте его с телефона на номер +370 612 61703.',
+    deskNote: 'Если вы за компьютером, скопируйте текст и отправьте его по SMS со своего телефона на номер +370 612 61703. Точное время вы согласуете с Викторией.',
     sendSms: 'Отправить SMS',
     copy: 'Скопировать текст', copied: 'Скопировано',
-    smsNote: 'Сообщение откроется в вашем телефоне, отправите его сами. Точное время согласуете с Викторией.',
+    smsNote: 'Сообщение откроется в приложении для SMS — останется только отправить его. Точное время вы согласуете с Викторией.',
     contKicker: 'Контакты', contTitle: 'Контакты и адрес',
     mailDt: 'Эл. почта', mailA: 'Написать письмо',
     fbA: 'Страница в Facebook',
     routeDt: 'Маршрут', routeA: 'Открыть на карте',
     concept: 'Концепция — неофициальный сайт',
     title: 'Виктория, медицинский косметолог. Висагинас',
-    desc: 'Медицинский косметолог Виктория, Tarybų g. 6, Висагинас. Запись по телефону +370 612 61703 или SMS.'
+    desc: 'Медицинский косметолог Виктория, Tarybų g. 6, Visaginas. Запись по телефону +370 612 61703 или по SMS.'
   };
   var LT = { copied: 'Nukopijuota' };
 
-  /* SMS tekstas: kalba = puslapio kalba; nieko nepažymėjus — konsultacija be laiko */
+  /* SMS tekstas: kalba = puslapio kalba; nieko nepažymėjus — paprastas prašymas užregistruoti */
   var SMS = {
     lt: {
       hi: 'Laba diena, Viktorija.',
-      topic: { none: 'Norėčiau užsiregistruoti.', consult: 'Norėčiau užsiregistruoti konsultacijai.', face: 'Norėčiau užsiregistruoti veido odos priežiūrai.', unsure: 'Norėčiau pasitarti, nuo ko pradėti.' },
-      when: { asap: 'kuo greičiau', 'this': 'šią savaitę', next: 'kitą savaitę' },
-      time: { am: 'iki pietų', pm: 'po pietų', any: 'bet kuriuo metu' },
-      pref: 'Patogiausias laikas:', anyOnly: 'Laikas man nesvarbus.',
+      topic: { none: 'Norėčiau užsiregistruoti.', consult: 'Norėčiau užsiregistruoti konsultacijai.', face: 'Norėčiau užsiregistruoti dėl veido odos priežiūros.', unsure: 'Norėčiau pasitarti, nuo ko pradėti.' },
+      when: { asap: 'kuo anksčiau', 'this': 'šią savaitę', next: 'kitą savaitę' },
+      time: { am: 'iki pietų', pm: 'po pietų' },
+      withWhen: { am: 'iki pietų', pm: 'po pietų' },
+      whenLead: 'Man tiktų', asapLead: 'Man tiktų', timeLead: 'Man tiktų',
+      anyOnly: 'Man tiktų bet kuriuo metu.',
       ask: 'Ar būtų laisvo laiko?'
     },
     ru: {
       hi: 'Здравствуйте, Виктория!',
       topic: { none: 'Хочу записаться на приём.', consult: 'Хочу записаться на консультацию.', face: 'Хочу записаться на уход за кожей лица.', unsure: 'Хочу посоветоваться, с чего начать.' },
       when: { asap: 'как можно скорее', 'this': 'на этой неделе', next: 'на следующей неделе' },
-      time: { am: 'до обеда', pm: 'после обеда', any: 'в любое время' },
-      pref: 'Удобное время:', anyOnly: 'Время для меня не важно.',
-      ask: 'Будет ли свободное время?'
+      time: { am: 'до обеда', pm: 'после обеда' },
+      withWhen: { am: 'лучше до обеда', pm: 'лучше после обеда' },
+      whenLead: 'Мне удобно', asapLead: 'Хотелось бы прийти', timeLead: 'Мне удобнее',
+      anyOnly: 'Мне подойдёт любое время.',
+      ask: 'Подскажите, пожалуйста, когда вы могли бы меня принять?'
     }
   };
 
+  /* „Nesvarbu“ kartu su savaite nieko neprideda, todėl praleidžiamas */
   function build(state, lang) {
     var t = SMS[lang] || SMS.lt, parts = [t.hi, t.topic[state.topic] || t.topic.none];
-    var w = t.when[state.when], tm = t.time[state.time];
-    if (w) parts.push(t.pref + ' ' + w + (tm ? ', ' + tm : '') + '.');
-    else if (state.time === 'any') parts.push(t.anyOnly);
-    else if (tm) parts.push(t.pref + ' ' + tm + '.');
+    var w = t.when[state.when];
+    if (w) {
+      var tw = t.withWhen[state.time];
+      parts.push((state.when === 'asap' ? t.asapLead : t.whenLead) + ' ' + w + (tw ? ', ' + tw : '') + '.');
+    } else if (state.time === 'any') parts.push(t.anyOnly);
+    else if (t.time[state.time]) parts.push(t.timeLead + ' ' + t.time[state.time] + '.');
     parts.push(t.ask);
     var text = parts.join(' ');
     var nm = (state.name || '').trim();

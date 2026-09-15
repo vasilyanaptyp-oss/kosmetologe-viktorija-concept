@@ -9,8 +9,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="lt_LT">
 <meta property="og:locale:alternate" content="ru_RU">
-<meta property="og:title" content="Viktorija, medicinos kosmetologė. Visaginas">
-<meta property="og:description" content="Kabinetas Tarybų g. 6, Visaginas. Registracija telefonu arba SMS žinute.">
+<meta property="og:title" content="Koncepcija: Viktorija, medicinos kosmetologė, Visaginas">
+<meta property="og:description" content="Koncepcija — neoficiali svetainė. Tarybų g. 6, Visaginas.">
 <meta property="og:url" content="https://vasilyanaptyp-oss.github.io/kosmetologe-viktorija-concept/">
 <meta property="og:image" content="https://vasilyanaptyp-oss.github.io/kosmetologe-viktorija-concept/img/og.jpg">
 <meta property="og:image:width" content="1200">
@@ -57,7 +57,7 @@
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;background:var(--room);scroll-padding-top:calc(var(--hdr) + 12px)}
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
-.i18n-wait body{visibility:hidden}
+.i18n-wait [data-i18n]{visibility:hidden}
 body{margin:0;background:var(--room);color:var(--ink);font:400 1.0625rem/1.55 var(--text);-webkit-font-smoothing:antialiased;overflow-x:clip}
 img,svg{display:block}
 img{max-width:100%;height:auto}
@@ -85,7 +85,7 @@ a{color:inherit}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;min-height:44px;margin-right:auto}
 .brand svg{width:30px;height:30px;flex:none}
 .brand b{display:block;font:500 1.375rem/1 var(--disp);letter-spacing:-.01em}
-.brand small{display:block;font-size:.8125rem;line-height:1.25;color:var(--ink-2);margin-top:2px}
+.brand small{display:block;font-size:.8125rem;line-height:1.25;color:var(--ink-2);margin-top:2px;white-space:nowrap}
 .nav{display:none;gap:4px}
 .nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;font-size:.9375rem;text-decoration:none;color:var(--ink-2);border-radius:6px}
 .hdr-tel{display:none;align-items:center;min-height:44px;font-weight:500;text-decoration:none}
@@ -104,8 +104,7 @@ a{color:inherit}
   .hdr-tel:hover{text-decoration:underline;text-underline-offset:4px}
   .lang a:not([aria-current="true"]):hover{color:var(--ink)}
 }
-@media (max-width:359px){.brand small{display:none}}
-@media (max-width:420px){html[lang="ru"] .brand small{display:none}}
+@media (max-width:400px){.brand small{display:none}}
 
 /* ---------- mygtukai ---------- */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:12px 22px;border-radius:10px;font:600 1rem/1.15 var(--text);text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:background-color .2s,border-color .2s,transform .15s var(--ease);-webkit-tap-highlight-color:transparent}
@@ -127,15 +126,15 @@ a{color:inherit}
 .h1 .b{display:inline}
 .h1b{display:none}
 .photo{--m:8px;--ly:calc(var(--m) + 1px + (100cqw - 2 * var(--m) - 2px) * .258);position:relative;margin:4px 0 12px;align-self:center;width:100%;max-width:440px;container-type:inline-size}
+@media (max-width:767px){.photo{max-width:calc(100% - 48px)}}
 .photo::before{content:"";position:absolute;left:50%;top:var(--ly);width:100vw;height:1px;transform:translateX(-50%);background:var(--line);z-index:0}
 .mat{position:relative;z-index:1;padding:8px;background:var(--lamp);border:1px solid var(--line);border-radius:3px}
 .pic{position:relative;overflow:hidden;border-radius:1px;background:#dfe4e6}
 .pic img{width:100%;aspect-ratio:1}
 .origin{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .origin path{fill:none;vector-effect:non-scaling-stroke;stroke-linecap:round}
-.origin .k{stroke:#fff;stroke-width:3.5;opacity:.9}
-.origin .s{stroke:var(--slate);stroke-width:1.5}
-.photo figcaption{position:relative;z-index:1;display:flex;justify-content:space-between;gap:12px;margin-top:8px;font-size:.8125rem;color:var(--ink-2)}
+.origin .k{stroke:#fff;stroke-width:2.2;opacity:.8;filter:drop-shadow(0 0 5px rgba(255,255,255,.95))}
+.photo figcaption{position:relative;z-index:1;display:none;justify-content:space-between;gap:12px;margin-top:8px;font-size:.8125rem;color:var(--ink-2)}
 .glints{position:absolute;left:50%;top:var(--ly);width:100vw;height:1px;transform:translateX(-50%);z-index:0;pointer-events:none}
 .glints i{position:absolute;top:-1px;height:3px;width:min(26vw,300px);border-radius:3px}
 .glints .gl{right:calc(50% + 50cqw);background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.95));transform-origin:100% 50%}
@@ -143,7 +142,7 @@ a{color:inherit}
 .sub{max-width:34rem;color:var(--ink-2);font-size:1.0625rem;margin:0 0 18px;text-wrap:pretty}
 .cta{display:grid;grid-template-columns:1.2fr 1fr;gap:8px;margin:0 0 22px}
 .cta .btn{padding:10px 12px;gap:8px}
-@media (max-width:420px){.cta .btn-line{font-size:.9375rem;gap:6px}.cta .btn-line svg{width:18px;height:18px}}
+@media (max-width:400px){.cta .btn-line{padding:10px 8px}.cta .btn-line svg{display:none}}
 .spec{margin:0;padding:0;list-style:none;border-top:1px solid var(--line)}
 .spec li{display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-bottom:1px solid var(--line);font-size:.9375rem}
 .spec span{color:var(--ink-2)}
@@ -152,6 +151,7 @@ a{color:inherit}
 
 @media (min-width:768px) and (max-width:1079px){
   .stage{max-width:720px}
+  .photo{align-self:flex-start}
   .cta{grid-template-columns:auto auto;justify-content:start}
 }
 @media (min-width:1080px){
@@ -161,7 +161,6 @@ a{color:inherit}
   .za{grid-column:1;grid-row:1;display:flex;flex-direction:column;align-items:flex-end;text-align:right;padding-bottom:26px}
   .zb{grid-column:3;grid-row:2;padding-top:26px}
   .zc{grid-column:1;grid-row:2;padding-top:26px}
-  .zd{grid-column:3;grid-row:1;align-self:end;padding-bottom:26px}
   .h1{font-size:clamp(3.25rem,4.6vw,4.25rem);margin:0}
   .h1 .b{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
   .h1b{display:block;font:300 clamp(3.25rem,4.6vw,4.25rem)/1 var(--disp);letter-spacing:-.02em;text-wrap:balance;margin:0 0 22px}
@@ -169,16 +168,13 @@ a{color:inherit}
   .cta{grid-template-columns:auto;justify-content:start;gap:10px;margin:0}
   .cta .btn{justify-content:flex-start;min-width:268px;padding:10px 20px}
   .spec{max-width:300px;margin-left:auto}
-  .zd .cap{display:flex;align-items:center;gap:10px;font-size:.875rem;color:var(--ink-2);line-height:1.4;margin:0}
-  .zd .cap svg{width:22px;height:22px;flex:none}
   .za .eyebrow span{display:block}
   .za .eyebrow .dot{display:none}
   .photo figcaption{display:none}
 }
+@media (min-width:1080px) and (max-width:1239px){:root{--ph:min(372px,54svh)} .stage{column-gap:32px} .spec li{font-size:.875rem}}
 html[lang="ru"] .h1,html[lang="ru"] .h1b{font-size:clamp(2.3rem,9.6vw,3.9rem)}
 @media (min-width:1080px){html[lang="ru"] .h1,html[lang="ru"] .h1b{font-size:clamp(2.9rem,4.1vw,3.8rem)}}
-.zd{display:none}
-@media (min-width:1080px){.zd{display:block}}
 
 /* ---------- keliaujanti lempa (tik plačiame ekrane su GSAP) ---------- */
 main{position:relative}
@@ -196,7 +192,8 @@ main > section{position:relative;z-index:1;overflow-x:clip}
 .lamp-on .anchor-ring{opacity:0}
 
 /* ---------- sekcijos ---------- */
-.sec{padding:clamp(64px,10vw,128px) 0}
+.sec{padding:clamp(56px,8vw,104px) 0}
+#h2r{margin-bottom:clamp(24px,3vw,40px)}
 .kicker{display:flex;align-items:center;gap:10px;font:500 .9375rem/1.35 var(--text);color:var(--ink-2);margin:0 0 14px}
 .kicker::before{content:"";width:28px;height:1px;background:var(--ink-2)}
 .h2{font-size:clamp(2.5rem,7.5vw,4.5rem);letter-spacing:-.02em;margin:0 0 18px;text-wrap:balance}
@@ -205,10 +202,11 @@ main > section{position:relative;z-index:1;overflow-x:clip}
 /* procedūros */
 .proc{display:grid;gap:28px}
 .proc-head{position:relative}
-.proc-head .ring{width:150px;aspect-ratio:1;right:-8px;top:-128px;z-index:-1}
+.proc-head .ring{display:none;width:260px;aspect-ratio:1;left:-49px;top:-236px;z-index:-1}
+@media (min-width:1080px){.proc-head .ring{display:block}}
 .rows{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
 .row{position:relative;display:grid;grid-template-columns:44px 1fr;gap:4px 14px;padding:24px 16px 22px;border-bottom:1px solid var(--line);isolation:isolate;overflow:hidden}
-.row .lit{position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(250,252,253,0) 0,var(--lamp) 14%,var(--lamp) 100%);box-shadow:inset 0 1px 0 #fff}
+.row .lit{position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(250,252,253,.55) 0,var(--lamp) 64px);box-shadow:inset 0 1px 0 #fff}
 .row .n{grid-row:1 / span 3;font:300 1.75rem/1 var(--disp);color:var(--ink-2);padding-top:3px;font-variant-numeric:lining-nums}
 .row h3{font:500 1.5rem/1.15 var(--disp);letter-spacing:-.005em;margin:0 0 6px;display:flex;align-items:center;gap:10px}
 .row h3 svg{width:18px;height:18px;flex:none}
@@ -217,15 +215,14 @@ main > section{position:relative;z-index:1;overflow-x:clip}
 .row .acts{display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px}
 .row.off{background:transparent}
 .row.off h3{color:var(--ink-2);font-weight:400}
-.chip-soon{display:inline-flex;align-items:center;min-height:26px;padding:2px 10px;border:1px solid var(--slate);border-radius:999px;font:600 .75rem/1 var(--text);letter-spacing:.08em;text-transform:uppercase;color:var(--slate)}
+.chip-soon{display:inline-flex;align-items:center;min-height:28px;padding:2px 10px;border:1px solid var(--ice);border-radius:999px;font:500 .8125rem/1 var(--text);color:var(--ink-2)}
 @media (min-width:900px){
   .proc{grid-template-columns:4fr 8fr;gap:48px;align-items:start}
   .proc-head{padding-top:28px}
-  .proc-head .ring{right:auto;left:-34px;top:-196px;width:260px}
   .row{grid-template-columns:72px minmax(0,1fr) minmax(0,1.1fr);padding:34px 28px 32px 20px;gap:6px 24px}
   .row .n{font-size:2rem}
   .row h3{font-size:1.75rem;margin:0}
-  .row h3{grid-column:2;grid-row:1 / span 2}
+  .row h3{grid-column:2;grid-row:1 / span 2;align-self:start;margin-top:-2px}
   .row .body{grid-column:3}
   .row .acts{grid-column:3}
   .row .n{grid-row:1 / span 2}
@@ -234,13 +231,13 @@ main > section{position:relative;z-index:1;overflow-x:clip}
 /* registracija */
 .reg{display:grid;gap:36px}
 .lens-wrap{position:relative;display:grid;justify-items:center;padding:52px 0 8px}
-.lens{position:relative;width:min(250px,64vw);aspect-ratio:1;display:grid;place-items:center;text-align:center}
-.lens .ring{inset:-55%}
-.lens-disc{position:relative;z-index:1;width:100%;height:100%;border-radius:50%;background:var(--lamp);box-shadow:0 0 0 1px var(--line),inset 0 1px 0 #fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:20px}
+.lens{position:relative;width:min(236px,62vw);aspect-ratio:1;display:grid;place-items:center;text-align:center}
+.lens .ring{inset:-51%}
+.lens-disc{position:relative;z-index:1;width:100%;height:100%;border-radius:50%;background:var(--lamp);box-shadow:inset 0 1px 0 #fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:14px}
 .lens-disc .lbl{font:500 .9375rem/1.2 var(--text);color:var(--ink-2)}
-.lens-disc a.big{font:300 clamp(1.625rem,7vw,2.125rem)/1.1 var(--disp);letter-spacing:-.005em;text-decoration:none;min-height:44px;display:inline-flex;align-items:center;font-variant-numeric:tabular-nums lining-nums}
+.lens-disc{container-type:inline-size}
+.lens-disc a.big{white-space:nowrap;font:300 12.5cqw/1.1 var(--disp);letter-spacing:-.005em;text-decoration:none;min-height:44px;display:inline-flex;align-items:center;font-variant-numeric:tabular-nums lining-nums}
 .lens-disc .btn{min-height:46px;padding:8px 18px;margin-top:6px}
-.lens-note{margin:58px 0 0;font-size:.9375rem;color:var(--ink-2);text-align:center}
 .panel{background:var(--lamp);border:1px solid var(--line);border-radius:6px;padding:clamp(18px,4vw,32px)}
 .panel h3{font:500 1.625rem/1.15 var(--disp);margin:0 0 4px}
 .panel .hint{color:var(--ink-2);font-size:.9375rem;margin:0 0 16px}
@@ -253,51 +250,65 @@ legend{font:500 .9375rem/1.35 var(--text);color:var(--ink);margin:0 0 8px;paddin
 .chips input:checked + span{background:var(--slate);border-color:var(--slate);color:#fff}
 .chips input:focus-visible + span{outline:2px solid var(--slate);outline-offset:2px}
 @media (hover:hover) and (pointer:fine){.chips span:hover{border-color:var(--slate)}}
+@media (max-width:559px){
+  .chips{display:grid;grid-template-columns:1fr;gap:6px}
+  .chips label{display:block}
+  .chips span{display:flex;width:100%;min-height:48px;padding:10px 14px}
+  .chips.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .chips.three span{justify-content:center;text-align:center;padding:8px 6px}
+}
 .field{display:grid;gap:6px;margin:4px 0 16px;max-width:320px}
 .field label{font:500 .9375rem/1.35 var(--text);color:var(--ink)}
 .field input{font:400 1rem var(--text);min-height:46px;padding:10px 12px;border:1px solid var(--ice);border-radius:8px;background:#fff;color:var(--ink)}
 .field input:focus{outline:2px solid var(--slate);outline-offset:1px;border-color:var(--slate)}
-.clear{display:inline-flex;align-items:center;min-height:44px;margin:-6px 0 8px;padding:0;border:0;background:none;font:500 .9375rem var(--text);color:var(--slate);text-decoration:underline;text-underline-offset:4px;cursor:pointer}
-.clear[disabled]{color:var(--ink-2);text-decoration:none;cursor:default;opacity:.75}
+.clear{position:absolute;top:4px;right:8px;display:inline-flex;align-items:center;min-height:36px;padding:0 6px;border:0;background:none;font:500 .8125rem var(--text);color:var(--slate);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.clear::after{content:"";position:absolute;inset:-4px -2px}
+.clear[disabled]{visibility:hidden}
 .desk-note{display:none}
+@media (hover:hover) and (pointer:fine){.mob-note{display:none}}
 @media (hover:hover) and (pointer:fine){
   .desk-note{display:block}
   .panel .btns #copyBtn{order:-1;background:var(--slate);border-color:var(--slate);color:#fff}
   .panel .btns #smsBtn{background:transparent;color:var(--ink);border-color:var(--ink)}
 }
-.msg{margin:0 0 14px;padding:14px 16px;border:1px solid var(--line);border-left:3px solid var(--slate);border-radius:4px;background:#fff}
-.msg .lbl{display:block;font:500 .875rem/1.35 var(--text);color:var(--ink-2);margin-bottom:6px}
+.msg{position:relative;margin:0 0 14px;padding:14px 16px;border:1px solid var(--line);border-left:3px solid var(--slate);border-radius:4px;background:#fff}
+.msg .lbl{display:block;padding-right:clamp(90px,34%,170px);font:500 .875rem/1.35 var(--text);color:var(--ink-2);margin-bottom:6px}
 .msg output{display:block;white-space:pre-line;font-size:1rem;line-height:1.5}
 .panel .btns{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center}
 .panel .note{margin:12px 0 0;font-size:.875rem;color:var(--ink-2)}
+@media (min-width:600px) and (max-width:899px){.lens{width:280px}}
 @media (min-width:900px){
   .reg{grid-template-columns:5fr 7fr;gap:56px;align-items:center}
   .lens{width:300px}
-  .lens-note{margin-top:72px}
 }
 
 /* kontaktai */
 .contacts{display:grid;gap:28px}
 .addr{font:300 clamp(3rem,11vw,6rem)/.95 var(--disp);letter-spacing:-.025em;margin:0}
-.addr small{display:block;font:400 clamp(1.25rem,3vw,1.75rem)/1.2 var(--disp);color:var(--ink-2);letter-spacing:0;margin-top:10px}
+.addr small{display:block;font:400 clamp(1.25rem,3vw,1.75rem)/1.2 var(--disp);color:var(--ink-2);letter-spacing:0;margin-top:20px}
 .dl{margin:0;border-top:1px solid var(--line)}
 .dl div{display:grid;grid-template-columns:minmax(110px,.8fr) 2fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);align-items:center}
 .dl dt{color:var(--ink-2);font-size:.9375rem}
 .dl dd{margin:0;font-weight:500}
 .dl a{display:inline-flex;align-items:center;gap:6px;min-height:44px;text-decoration:underline;text-decoration-color:var(--ice);text-decoration-thickness:1.5px;text-underline-offset:5px}
 @media (hover:hover) and (pointer:fine){.dl a:hover{text-decoration-color:var(--slate)}}
-@media (min-width:900px){.contacts{grid-template-columns:7fr 5fr;align-items:end;gap:56px}}
+@media (min-width:900px){.contacts{grid-template-columns:7fr 5fr;align-items:start;gap:56px}}
 
 /* poraštė */
 .ftr{background:var(--room-2);border-top:1px solid var(--line);padding:32px 0 calc(32px + var(--bar,0px));font-size:.9375rem;color:var(--ink-2)}
 .ftr .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;justify-content:space-between}
 .ftr b{color:var(--ink);font-weight:500}
+.ftr p{margin:0}
+.nw{white-space:nowrap}
+@media (max-width:599px){.ftr-id .sep{display:none}.ftr-id>*{display:block}}
 .ftr .concept{font-weight:600;color:var(--ink)}
 
 /* telefono juosta */
 .bar{position:fixed;left:0;right:0;bottom:0;z-index:45;display:grid;grid-template-columns:1.35fr 1fr;gap:8px;padding:8px 12px calc(8px + env(safe-area-inset-bottom));background:rgba(250,252,253,.96);border-top:1px solid var(--line);transition:transform .35s var(--ease),visibility 0s linear 0s}
 .bar .btn{min-height:48px;padding:8px 12px}
-.js .bar:not(.show),.bar.away{transform:translateY(110%);visibility:hidden;transition:transform .35s var(--ease),visibility 0s linear .35s}
+.bar.away,.js .bar:not(.show){transform:translateY(110%);visibility:hidden;transition:transform .35s var(--ease),visibility 0s linear .35s}
+.js .bar:not(.show):not(.away){animation:barFallback 0s linear 4s forwards}
+@keyframes barFallback{to{transform:none;visibility:visible}}
 @media (max-width:899px){:root{--bar:72px}}
 @media (min-width:900px){.bar{display:none}}
 
@@ -376,20 +387,18 @@ legend{font:500 .9375rem/1.35 var(--text);color:var(--ink);margin:0 0 8px;paddin
           <div class="pic">
             <picture>
               <source type="image/webp" srcset="img/viktorija-kabinetas-480.webp 480w, img/viktorija-kabinetas-720.webp 720w, img/viktorija-kabinetas-1000.webp 1000w" sizes="(min-width:1080px) 440px, (min-width:768px) 440px, calc(100vw - 50px)">
-              <img src="img/viktorija-kabinetas-720.jpg" width="1000" height="1000" alt="Medicinos kosmetologė Viktorija savo kabinete Visagine" data-i18n-attr="alt:photoAlt" fetchpriority="high" decoding="async">
+              <img src="img/viktorija-kabinetas-720.jpg" width="1000" height="1000" alt="Medicinos kosmetologė Viktorija kabinete Visagine" data-i18n-attr="alt:photoAlt" fetchpriority="high" decoding="async">
             </picture>
-            <svg class="origin" viewBox="0 0 1000 1000" aria-hidden="true" focusable="false"><g class="arc"><path class="k" d="M359 293.7A38 38 0 1 1 359 222.3"/><path class="s" d="M359 293.7A38 38 0 1 1 359 222.3"/></g></svg>
+            <svg class="origin" viewBox="0 0 1000 1000" aria-hidden="true" focusable="false"><g class="arc"><path class="k" d="M359 293.7A38 38 0 1 1 359 222.3"/></g></svg>
           </div>
         </div>
-        <figcaption><span data-i18n="capL">Kabinetas</span><span>Tarybų g. 6, Visaginas</span></figcaption>
+        <figcaption><span data-i18n="capL">Kabinetas</span><span>Tarybų&nbsp;g.&nbsp;6, Visaginas</span></figcaption>
         <div class="glints" aria-hidden="true"><i class="gl"></i><i class="gr"></i></div>
       </figure>
 
-      <div class="zd"><p class="cap"><svg aria-hidden="true"><use href="#mark"/></svg><span data-i18n="capD">Šviesus kabinetas Visagine</span></p></div>
-
       <div class="zb">
         <p class="h1b" aria-hidden="true" data-i18n="h1b">šviesiame kabinete.</p>
-        <p class="sub" data-i18n="sub">Viktorija, medicinos kosmetologė, priima kabinete Visagine. Užsiregistruokite telefonu arba parašykite SMS žinutę.</p>
+        <p class="sub" data-i18n="sub">Viktorija, medicinos kosmetologė, priima Visagine. Užsiregistruokite telefonu arba parašykite SMS žinutę.</p>
         <div class="cta" id="heroCta">
           <a class="btn btn-slate" href="tel:+37061261703"><svg aria-hidden="true"><use href="#i-phone"/></svg><span class="stack"><span data-i18n="call">Skambinti</span><small class="num">+370 612 61703</small></span></a>
           <a class="btn btn-line js-sms" href="sms:+37061261703?&amp;body=Laba%20diena%2C%20Viktorija.%20Nor%C4%97%C4%8Diau%20u%C5%BEsiregistruoti.%20Ar%20b%C5%ABt%C5%B3%20laisvo%20laiko%3F"><svg aria-hidden="true"><use href="#i-msg"/></svg><span data-i18n="writeSms">Parašyti SMS</span></a>
@@ -398,9 +407,8 @@ legend{font:500 .9375rem/1.35 var(--text);color:var(--ink);margin:0 0 8px;paddin
 
       <div class="zc">
         <ul class="spec">
-          <li><span data-i18n="specCab">Kabinetas</span><b>Tarybų g. 6, Visaginas</b></li>
+          <li><span data-i18n="specCab">Kabinetas</span><b>Tarybų&nbsp;g.&nbsp;6, Visaginas</b></li>
           <li><span data-i18n="specReg">Registracija</span><b data-i18n="specRegV">telefonu arba SMS</b></li>
-          <li><span data-i18n="specTel">Telefonas</span><b><a class="num" href="tel:+37061261703">+370 612 61703</a></b></li>
         </ul>
       </div>
     </div>
@@ -410,29 +418,29 @@ legend{font:500 .9375rem/1.35 var(--text);color:var(--ink);margin:0 0 8px;paddin
     <div class="wrap proc">
       <div class="proc-head">
         <div class="ring anchor-ring" id="a1" aria-hidden="true"><div class="halo"></div><svg viewBox="-100 -100 200 200"><use href="#lamp-sym" x="-100" y="-100" width="200" height="200"/></svg></div>
-        <p class="kicker" data-i18n="procKicker">Kuo galime padėti</p>
-        <h2 class="h2" id="h2p" data-i18n="procTitle">Procedūros</h2>
-        <p class="lead" data-i18n="procLead">Išsamų procedūrų sąrašą netrukus papildysime. Jei abejojate, nuo ko pradėti, rinkitės konsultaciją.</p>
+        <p class="kicker" data-i18n="procKicker">Procedūros</p>
+        <h2 class="h2" id="h2p" data-i18n="procTitle">Nuo ko pradėti</h2>
+        <p class="lead" data-i18n="procLead">Pasirinkite kryptį ir įtraukite ją į SMS žinutę — arba tiesiog paskambinkite.</p>
       </div>
       <ol class="rows">
         <li class="row">
           <span class="lit" aria-hidden="true"></span>
           <span class="n" aria-hidden="true">01</span>
           <h3><span data-i18n="p1t">Konsultacija</span></h3>
-          <div class="body"><p data-i18n="p1d">Pokalbis kabinete: aptarsite, kas jums svarbu ir nuo ko pradėti.</p></div>
+          <div class="body"><p data-i18n="p1d">Jei dar nežinote, nuo ko pradėti.</p></div>
           <div class="acts"><a class="tlink js-topic" href="#registracija" data-topic="consult" data-i18n="addToMsg">Įtraukti į žinutę</a></div>
         </li>
         <li class="row">
           <span class="lit" aria-hidden="true"></span>
           <span class="n" aria-hidden="true">02</span>
           <h3><span data-i18n="p2t">Veido odos priežiūra</span></h3>
-          <div class="body"><p data-i18n="p2d">Priežiūra parenkama individualiai.</p></div>
+          <div class="body"><p data-i18n="p2d">Plačiau — telefonu arba SMS žinute.</p></div>
           <div class="acts"><a class="tlink js-topic" href="#registracija" data-topic="face" data-i18n="addToMsg">Įtraukti į žinutę</a></div>
         </li>
         <li class="row off">
           <span class="n" aria-hidden="true">03</span>
           <h3><span data-i18n="p3t">Procedūrų sąrašą papildysime</span></h3>
-          <div class="body"><p data-i18n="p3d">Kol kas apie procedūras klauskite telefonu.</p></div>
+          <div class="body"><p data-i18n="p3d">Apie procedūras klauskite telefonu.</p></div>
           <div class="acts"><span class="chip-soon" data-i18n="soon">Ruošiama</span><a class="tlink num" href="tel:+37061261703">+370 612 61703</a></div>
         </li>
       </ol>
@@ -453,14 +461,13 @@ legend{font:500 .9375rem/1.35 var(--text);color:var(--ink);margin:0 0 8px;paddin
               <a class="btn btn-slate" href="tel:+37061261703"><svg aria-hidden="true"><use href="#i-phone"/></svg><span data-i18n="call">Skambinti</span></a>
             </div>
           </div>
-          <p class="lens-note" data-i18n="lensNote">Tarybų g. 6, Visaginas</p>
-        </div>
+                  </div>
 
         <form class="panel" id="smsForm" action="#" novalidate>
           <h3 data-i18n="panelTitle">Paruošime SMS žinutę</h3>
-          <p class="hint" data-i18n="panelHint">Pažymėkite, kas jums tinka. Nieko nežymėjus žinutė vis tiek bus paruošta.</p>
+          <p class="hint" data-i18n="panelHint">Pažymėkite, kas jums tinka. Jei nieko nepažymėsite, žinutė vis tiek bus paruošta.</p>
           <fieldset>
-            <legend data-i18n="lgTopic">Kas domina?</legend>
+            <legend data-i18n="lgTopic">Kas jus domina?</legend>
             <div class="chips">
               <label><input type="radio" name="topic" value="consult"><span data-i18n="tConsult">Konsultacija</span></label>
               <label><input type="radio" name="topic" value="face"><span data-i18n="tFace">Veido odos priežiūra</span></label>
@@ -477,7 +484,7 @@ legend{font:500 .9375rem/1.35 var(--text);color:var(--ink);margin:0 0 8px;paddin
           </fieldset>
           <fieldset>
             <legend data-i18n="lgTime">Dienos metas</legend>
-            <div class="chips">
+            <div class="chips three">
               <label><input type="radio" name="time" value="am"><span data-i18n="tmAm">Iki pietų</span></label>
               <label><input type="radio" name="time" value="pm"><span data-i18n="tmPm">Po pietų</span></label>
               <label><input type="radio" name="time" value="any"><span data-i18n="tmAny">Nesvarbu</span></label>
@@ -487,17 +494,17 @@ legend{font:500 .9375rem/1.35 var(--text);color:var(--ink);margin:0 0 8px;paddin
             <label for="nm" data-i18n="nameLbl">Vardas (nebūtina)</label>
             <input id="nm" name="nm" type="text" autocomplete="given-name" maxlength="40">
           </div>
-          <button class="clear" type="button" id="clearBtn" data-i18n="clear">Išvalyti pasirinkimus</button>
           <div class="msg">
-            <span class="lbl"><span data-i18n="msgLbl">Jūsų žinutė</span> · <span data-i18n="msgTo">Kam:</span> <span class="num">+370 612 61703</span></span>
+            <span class="lbl"><span data-i18n="msgLbl">Jūsų žinutė</span> · <span data-i18n="msgTo">Kam:</span>&nbsp;<span class="num">+370 612 61703</span></span>
+            <button class="clear" type="button" id="clearBtn" data-i18n="clear">Išvalyti pasirinkimus</button>
             <output id="msgOut" for="nm" aria-live="polite">Laba diena, Viktorija. Norėčiau užsiregistruoti. Ar būtų laisvo laiko?</output>
           </div>
           <div class="btns">
-            <a class="btn btn-slate js-sms" id="smsBtn" href="SMSHREF"><svg aria-hidden="true"><use href="#i-msg"/></svg><span data-i18n="sendSms">Siųsti SMS</span></a>
+            <a class="btn btn-slate js-sms" id="smsBtn" href="sms:+37061261703?&amp;body=Laba%20diena%2C%20Viktorija.%20Nor%C4%97%C4%8Diau%20u%C5%BEsiregistruoti.%20Ar%20b%C5%ABt%C5%B3%20laisvo%20laiko%3F"><svg aria-hidden="true"><use href="#i-msg"/></svg><span data-i18n="sendSms">Siųsti SMS</span></a>
             <button class="btn btn-line" type="button" id="copyBtn" hidden><span data-i18n="copy">Kopijuoti tekstą</span></button>
           </div>
-          <p class="note desk-note" data-i18n="deskNote">Kompiuteryje nukopijuokite tekstą ir išsiųskite jį iš telefono numeriu +370 612 61703.</p>
-          <p class="note" data-i18n="smsNote">Žinutė atsidarys jūsų telefone, išsiųsite ją patys. Tikslų laiką suderinsite su Viktorija.</p>
+          <p class="note desk-note" data-i18n="deskNote">Kompiuteryje nukopijuokite tekstą ir išsiųskite jį iš telefono numeriu +370 612 61703. Tikslų laiką suderinsite su Viktorija.</p>
+          <p class="note mob-note" data-i18n="smsNote">Žinutė atsidarys jūsų telefone – jums tereikės ją išsiųsti. Tikslų laiką suderinsite su Viktorija.</p>
         </form>
       </div>
     </div>
@@ -508,13 +515,13 @@ legend{font:500 .9375rem/1.35 var(--text);color:var(--ink);margin:0 0 8px;paddin
       <p class="kicker" data-i18n="contKicker">Kontaktai</p>
       <h2 class="sr" id="h2k" data-i18n="contTitle">Kontaktai ir adresas</h2>
       <div class="contacts">
-        <p class="addr">Tarybų g. 6<small>Visaginas</small></p>
+        <p class="addr">Tarybų&nbsp;g.&nbsp;6<small>Visaginas</small></p>
         <dl class="dl">
           <div><dt data-i18n="specTel">Telefonas</dt><dd><a class="num" href="tel:+37061261703">+370 612 61703</a></dd></div>
           <div><dt>SMS</dt><dd><a class="js-sms" href="sms:+37061261703?&amp;body=Laba%20diena%2C%20Viktorija.%20Nor%C4%97%C4%8Diau%20u%C5%BEsiregistruoti.%20Ar%20b%C5%ABt%C5%B3%20laisvo%20laiko%3F" data-i18n="writeSms">Parašyti SMS</a></dd></div>
-          <div><dt data-i18n="mailDt">El. paštas</dt><dd><a href="mailto:viktorija.puziniene@gmail.com" data-i18n="mailA">Rašyti el. laišką</a></dd></div>
+          <div><dt data-i18n="mailDt">El. paštas</dt><dd><a href="mailto:viktorija.puziniene@gmail.com" data-i18n="mailA">Parašyti el. laišką</a></dd></div>
           <div><dt>Facebook</dt><dd><a href="https://www.facebook.com/viktorija.puziniene.98" target="_blank" rel="noopener" data-i18n="fbA">Facebook puslapis</a></dd></div>
-          <div><dt data-i18n="routeDt">Kelias</dt><dd><a href="https://www.google.com/maps/search/?api=1&amp;query=Taryb%C5%B3%20g.%206%2C%20Visaginas" target="_blank" rel="noopener" data-i18n="routeA">Atidaryti žemėlapyje</a></dd></div>
+          <div><dt data-i18n="routeDt">Kaip atvykti</dt><dd><a href="https://www.google.com/maps/search/?api=1&amp;query=Taryb%C5%B3%20g.%206%2C%20Visaginas" target="_blank" rel="noopener" data-i18n="routeA">Atidaryti žemėlapyje</a></dd></div>
         </dl>
       </div>
     </div>
@@ -523,8 +530,8 @@ legend{font:500 .9375rem/1.35 var(--text);color:var(--ink);margin:0 0 8px;paddin
 
 <footer class="ftr">
   <div class="wrap">
-    <p style="margin:0"><b data-i18n="name">Viktorija</b> · <span data-i18n="role">medicinos kosmetologė</span> · Tarybų g. 6, Visaginas</p>
-    <p class="concept" style="margin:0" data-i18n="concept">Koncepcija — neoficiali svetainė</p>
+    <p class="ftr-id"><b data-i18n="name">Viktorija</b><span class="sep"> · </span><span data-i18n="role">medicinos kosmetologė</span><span class="sep"> · </span><span class="nw">Tarybų g. 6, Visaginas</span></p>
+    <p class="concept" data-i18n="concept">Koncepcija — neoficiali svetainė</p>
   </div>
 </footer>
 
@@ -533,10 +540,8 @@ legend{font:500 .9375rem/1.35 var(--text);color:var(--ink);margin:0 0 8px;paddin
   <a class="btn btn-line js-sms" href="sms:+37061261703?&amp;body=Laba%20diena%2C%20Viktorija.%20Nor%C4%97%C4%8Diau%20u%C5%BEsiregistruoti.%20Ar%20b%C5%ABt%C5%B3%20laisvo%20laiko%3F"><svg aria-hidden="true"><use href="#i-msg"/></svg>SMS</a>
 </div>
 
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"HealthAndBeautyBusiness","name":"Viktorija — medicinos kosmetologė","telephone":"+37061261703","address":{"@type":"PostalAddress","streetAddress":"Tarybų g. 6","addressLocality":"Visaginas","addressCountry":"LT"},"sameAs":["https://www.facebook.com/viktorija.puziniene.98"]}
-</script>
 <script src="i18n.js"></script>
+<script src="ui.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js" integrity="sha384-XmJ9SoHtVOHoQUcKvFAzVXwdkKo1Ie3bhmSoIAkcdsHGaIrVJIkmozyq0FJeb/Ly" crossorigin="anonymous" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrollTrigger.min.js" integrity="sha384-wl5TeDVvOWt30Pbf8aSo2ZrzsOjddu3avOBvHe+p+OhJt9gP6w9YXmDkN5DK2/dF" crossorigin="anonymous" defer></script>
 <script src="main.js" defer></script>
