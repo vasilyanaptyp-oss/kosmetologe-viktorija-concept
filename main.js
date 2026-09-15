@@ -80,9 +80,10 @@
       var vh = window.innerHeight;
       var pr = pic.getBoundingClientRect(), mr = main.getBoundingClientRect(), P = pr.width;
       var p0 = { x: pr.left - mr.left + P * LX, y: pr.top - mr.top + P * LY };
-      var c1 = centerOf(a1), c2 = centerOf(a2ring);
+      var c1 = centerOf(a1), c2 = centerOf(a2ring), discW = q('#a2 .lens-disc').getBoundingClientRect().width;
       /* žiedo išorinis skersmuo = 0,625 SVG dėžutės; lempos dėžutė 480 px */
       var s0 = (0.048 * P / 0.625) / 480, s1 = c1.w / 480, s2 = c2.w / 480;
+      var sHidden = Math.min(s2, discW * 0.92 / (0.625 * 480));   /* žiedas pasislėpęs už disko */
       /* aukštame ekrane y1 gali būti mažesnis už sustojimą — segmentai visada sudaro visą kelią */
       var y1 = Math.max(2, c1.docY - vh * 0.42);
       var hold = Math.min(vh * 0.16, y1 * 0.35);
@@ -102,9 +103,9 @@
         .to(lamp, { opacity: 1, duration: seg1 * 0.25, ease: 'sine.out' }, '<' + seg1 * 0.25)
         .addLabel('a1')
         .to(lamp, { duration: 2 * hold / total }, 'a1')
-        .to(lamp, { x: mid2.x, y: mid2.y, scale: (s1 + s2) / 2, opacity: 0.25, duration: seg2 / 2, ease: 'sine.in' })
-        .to(lamp, { x: c2.x, y: c2.y, scale: s2, duration: seg2 / 2, ease: 'sine.out' })
-        .to(lamp, { opacity: 1, duration: seg2 * 0.18, ease: 'sine.out' }, '>-' + seg2 * 0.18);
+        .to(lamp, { x: mid2.x, y: mid2.y, scale: (s1 + sHidden) / 2, opacity: 0.25, duration: seg2 * 0.45, ease: 'sine.in' })
+        .to(lamp, { x: c2.x, y: c2.y, scale: sHidden, duration: seg2 * 0.35, ease: 'sine.out' })
+        .to(lamp, { scale: s2, opacity: 1, duration: seg2 * 0.2, ease: 'power2.out' });
       tl.progress(progress);
       trig = ST.create({ trigger: document.body, start: 0, end: total, scrub: 0.7, animation: tl, fastScrollEnd: true });
     }
