@@ -68,7 +68,7 @@
   /* 4a. Plačiame ekrane: lempa išeina iš nuotraukos, sustoja virš „Procedūros“ ir apsijuosia aplink numerį */
   function buildTravel() {
     d.classList.add('lamp-on');
-    var tl, trig, timer, alive = true, lastW = window.innerWidth;
+    var tl, trig, timer, alive = true, lastW = window.innerWidth, lastH = window.innerHeight;
     function centerOf(el) {
       var r = el.getBoundingClientRect(), m = main.getBoundingClientRect();
       return { x: r.left - m.left + r.width / 2, y: r.top - m.top + r.height / 2, w: r.width, docY: r.top + window.scrollY + r.height / 2 };
@@ -85,8 +85,8 @@
       var s0 = (0.048 * P / 0.625) / 480, s1 = c1.w / 480, s2 = c2.w / 480;
       var sHidden = Math.min(s2, discW * 0.92 / (0.625 * 480));   /* žiedas pasislėpęs už disko */
       /* aukštame ekrane y1 gali būti mažesnis už sustojimą — segmentai visada sudaro visą kelią */
-      var y1 = Math.max(2, c1.docY - vh * 0.42);
-      var hold = Math.min(vh * 0.16, y1 * 0.35);
+      var hold = vh * 0.16;
+      var y1 = Math.max(hold + 60, c1.docY - vh * 0.42);
       var y2 = Math.max(y1 + hold + 40, c2.docY - vh * 0.62);
       var e0 = Math.max(0, Math.min(vh * 0.14, (y1 - hold) * 0.3));
       var total = y2;
@@ -114,7 +114,9 @@
       clearTimeout(timer);
       timer = setTimeout(function () { if (alive) { build(); ST.refresh(); } }, 180);
     }
-    function onResize() { if (window.innerWidth !== lastW) { lastW = window.innerWidth; schedule(); } }
+    function onResize() {
+      if (window.innerWidth !== lastW || window.innerHeight !== lastH) { lastW = window.innerWidth; lastH = window.innerHeight; schedule(); }
+    }
     window.addEventListener('resize', onResize);
     /* žinutės skydelis auga — perskaičiuojame lempos stoteles */
     var ro = 'ResizeObserver' in window ? new ResizeObserver(function () { if (alive) schedule(); }) : null;

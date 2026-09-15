@@ -61,11 +61,12 @@
     nameTimer = setTimeout(function () { out.setAttribute('aria-live', 'polite'); }, 900);
   });
   form.addEventListener('submit', function (e) { e.preventDefault(); });
-  clearBtn.addEventListener('click', function () {
+  clearBtn.addEventListener('click', function (e) {
     var inputs = qa('.chips input', form);
     inputs.forEach(function (i) { i.checked = false; });
     readState(); render('change');
-    inputs[0].focus();
+    /* mygtukas pasislepia — fokusas pereina į pirmą pasirinkimą; pirštu paspaudus puslapis nešoka */
+    try { inputs[0].focus({ preventScroll: e.detail > 0 }); } catch (x) { inputs[0].focus(); }
   });
 
   function copyText(text) {
@@ -112,12 +113,14 @@
   var bar = q('#bar');
   if (bar && 'IntersectionObserver' in window) {
     var seen = [];
-    var targets = [q('#heroCta'), q('#registracija .reg'), q('.ftr')].filter(Boolean);
+    var targets = [q('#heroCta'), q('#registracija .reg'), q('#kontaktai .dl'), q('.ftr')].filter(Boolean);
+    var showTimer;
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) { seen[targets.indexOf(en.target)] = en.isIntersecting; });
-      var any = seen.some(Boolean);
-      bar.classList.toggle('away', any);
-      bar.classList.toggle('show', !any);
+      clearTimeout(showTimer);
+      /* paslepiama iškart, parodoma su 250 ms delsa — kad nemirksėtų tarp blokų */
+      if (seen.some(Boolean)) { bar.classList.add('away'); bar.classList.remove('show'); }
+      else showTimer = setTimeout(function () { bar.classList.remove('away'); bar.classList.add('show'); }, 250);
     }, { threshold: 0, rootMargin: '-56px 0px 0px 0px' });
     targets.forEach(function (t) { io.observe(t); });
   } else if (bar) bar.classList.add('show');
