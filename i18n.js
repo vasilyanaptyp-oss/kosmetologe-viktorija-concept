@@ -37,7 +37,7 @@
     lensLbl: 'Звоните',
     panelTitle: 'Подготовим SMS',
     panelHint: 'Отметьте, что вам подходит. Можно ничего не выбирать — сообщение всё равно будет готово.',
-    lgTopic: 'Что вас интересует?', tConsult: 'Консультация', tFace: 'Уход за кожей лица', tUnsure: 'Пока не знаю',
+    lgTopic: 'Что вас интересует?', tConsult: 'Консультация', tFace: 'Уход за кожей лица', tDevice: 'Аппаратные и лазерные процедуры', tUnsure: 'Пока не знаю',
     lgWhen: 'Когда?', wAsap: 'Как можно скорее', wThis: 'На этой неделе', wNext: 'На следующей неделе',
     lgTime: 'Время дня', tmAm: 'До обеда', tmPm: 'После обеда', tmAny: 'Неважно',
     nameLbl: 'Имя (необязательно)',
@@ -61,7 +61,7 @@
   var SMS = {
     lt: {
       hi: 'Laba diena, Viktorija.',
-      topic: { none: 'Norėčiau užsiregistruoti.', consult: 'Norėčiau užsiregistruoti konsultacijai.', face: 'Norėčiau užsiregistruoti dėl veido odos priežiūros.', unsure: 'Norėčiau pasitarti, nuo ko pradėti.' },
+      topic: { none: 'Norėčiau užsiregistruoti.', consult: 'Norėčiau užsiregistruoti konsultacijai.', face: 'Norėčiau užsiregistruoti dėl veido odos priežiūros.', device: 'Norėčiau užsiregistruoti dėl aparatinės ar lazerinės procedūros.', unsure: 'Norėčiau pasitarti, nuo ko pradėti.' },
       when: { asap: 'kuo anksčiau', 'this': 'šią savaitę', next: 'kitą savaitę' },
       time: { am: 'iki pietų', pm: 'po pietų' },
       withWhen: { am: 'iki pietų', pm: 'po pietų' },
@@ -71,7 +71,7 @@
     },
     ru: {
       hi: 'Здравствуйте, Виктория!',
-      topic: { none: 'Хочу записаться на приём.', consult: 'Хочу записаться на консультацию.', face: 'Хочу записаться на уход за кожей лица.', unsure: 'Хочу посоветоваться, с чего начать.' },
+      topic: { none: 'Хочу записаться на приём.', consult: 'Хочу записаться на консультацию.', face: 'Хочу записаться на уход за кожей лица.', device: 'Хочу записаться на аппаратную или лазерную процедуру.', unsure: 'Хочу посоветоваться, с чего начать.' },
       when: { asap: 'как можно скорее', 'this': 'на этой неделе', next: 'на следующей неделе' },
       time: { am: 'до обеда', pm: 'после обеда' },
       withWhen: { am: 'лучше до обеда', pm: 'лучше после обеда' },
